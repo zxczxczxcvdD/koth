@@ -1,6 +1,5 @@
 -- ВСТАВЬ СЮДА СВОЮ ССЫЛКУ НА ЭТОТ ЖЕ ФАЙЛ В РЕПОЗИТОРИИ ДЛЯ АВТОИНЖЕКТА:
-getgenv().StretchMenuURL = "https://raw.githubusercontent.com/zxczxczxcvdD/koth/main/lua.lua
-"
+getgenv().StretchMenuURL = "https://raw.githubusercontent.com/zxczxczxcvdD/koth/main/lua.lua"
 
 -- Удаляем все старые окна ReGui при запуске
 pcall(function()
@@ -231,9 +230,13 @@ Window.OnVisibleChanged = function(visible)
     getgenv().StretchMenuVisible = visible
 end
 
--- СТАРЫЙ РАСТЯГ: применяем на каждый кадр
+-- Новый растяг: меняем FOV вместо CFrame (без фризов)
+local BASE_FOV = 70
 RunService.RenderStepped:Connect(function()
-    Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, getgenv().Resolution, 0, 0, 0, 1)
+    local targetFov = BASE_FOV * (1 / getgenv().Resolution)
+    if math.abs(Camera.FieldOfView - targetFov) > 0.01 then
+        Camera.FieldOfView = targetFov
+    end
 end)
 
 -- Автоинжект при смене placeId
@@ -248,4 +251,4 @@ spawn(function()
             break
         end
     end
-end) 
+end)

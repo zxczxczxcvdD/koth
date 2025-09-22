@@ -1,5 +1,5 @@
 -- ВСТАВЬ СЮДА СВОЮ ССЫЛКУ НА ЭТОТ ЖЕ ФАЙЛ В РЕПОЗИТОРИИ ДЛЯ АВТОИНЖЕКТА:
-getgenv().StretchMenuURL = "https://raw.github.com/zxczxczxcvdD/kotiki/main/kotik.lua"
+getgenv().StretchMenuURL = "https://raw.github.com/zxczxczxcvdD/koth/main/lua.lua"
 
 -- Удаляем все старые окна ReGui при запуске
 pcall(function()
